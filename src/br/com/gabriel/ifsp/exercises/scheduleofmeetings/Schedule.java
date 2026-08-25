@@ -22,7 +22,7 @@ public class Schedule {
 
         meetings = new Meeting[meetings.length + 50];
 
-        for (int i = 0; i < copy.length; i++) {
+        for (int i = 0; i < numberOfMeetings; i++) {
             meetings[i] = copy[i];
         }
     }
