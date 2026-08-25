@@ -28,6 +28,8 @@ public class Schedule {
     }
 
     public void addMeeting(Meeting meeting) {
+        if (meeting.getStartTime().isBefore(startTime) || meeting.getEndTime().isAfter(endTime)) return;
+
         for (int i = 0; i < numberOfMeetings; i++) {
             if (
                 (meetings[i].getStartTime().isBefore(meeting.getStartTime()) && meetings[i].getEndTime().isAfter(meeting.getStartTime())) ||
