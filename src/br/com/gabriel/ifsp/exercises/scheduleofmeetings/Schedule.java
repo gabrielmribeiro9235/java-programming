@@ -27,17 +27,16 @@ public class Schedule {
         }
     }
 
+    private boolean overlaps(Meeting newMeeting, Meeting existingMeeting) {
+        return newMeeting.getStartTime().isBefore(existingMeeting.getEndTime())
+            && existingMeeting.getStartTime().isBefore(newMeeting.getEndTime());
+    }
+
     public void addMeeting(Meeting meeting) {
         if (meeting.getStartTime().isBefore(startTime) || meeting.getEndTime().isAfter(endTime)) return;
 
         for (int i = 0; i < numberOfMeetings; i++) {
-            if (
-                (meetings[i].getStartTime().isBefore(meeting.getStartTime()) && meetings[i].getEndTime().isAfter(meeting.getStartTime())) ||
-                (meetings[i].getStartTime().isBefore(meeting.getEndTime()) && meetings[i].getEndTime().isAfter(meeting.getEndTime())) ||
-                (meetings[i].getStartTime().isAfter(meeting.getStartTime()) && meetings[i].getEndTime().isBefore(meeting.getEndTime())) ||
-                meetings[i].getStartTime().equals(meeting.getStartTime()) ||
-                meetings[i].getEndTime().equals(meeting.getEndTime())
-            ) {
+            if (overlaps(meeting, meetings[i])) {
                 return;
             }
         }
