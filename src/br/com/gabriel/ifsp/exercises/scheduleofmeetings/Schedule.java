@@ -41,7 +41,7 @@ public class Schedule {
                 return;
             }
         }
-        if (numberOfMeetings % 50 == 0) {
+        if (numberOfMeetings == meetings.length) {
             increaseArraySize();
         }
 
