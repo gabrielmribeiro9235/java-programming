@@ -26,7 +26,7 @@ public final class FullTimeEmployee extends Employee {
                 "id='" + getId() + '\'' +
                 ", name='" + getName() + '\'' +
                 ", jobTitle='" + getJobTitle() + '\'' +
-                ", dateOfEmployment='" + getDateOfEmployment().format(DateTimeFormatter.ofPattern("mm/dd/yyyy")) + '\'' +
+                ", dateOfEmployment=" + getDateOfEmployment().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")) +
                 ", monthlySalary=" + monthlySalary +
                 '}';
     }
