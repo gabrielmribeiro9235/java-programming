@@ -36,8 +36,7 @@ public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee 
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Employee)) return false;
-        Employee employee = (Employee) o;
+        if (!(o instanceof Employee employee)) return false;
         return Objects.equals(id, employee.id);
     }
 
