@@ -17,7 +17,7 @@ public class Main {
         System.out.printf("Hash code for hourly employee %s   : %d\n", perHourEmployee.getName(), perHourEmployee.hashCode());
 
         System.out.println("\ntoString of the FullTimeEmployee and PerHourEmployee classes:\n");
-        System.out.println(fullTimeEmployee.toString());
-        System.out.println(perHourEmployee.toString());
+        System.out.println(fullTimeEmployee);
+        System.out.println(perHourEmployee);
     }
 }
