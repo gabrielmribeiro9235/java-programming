@@ -6,7 +6,7 @@ public class Rectangle implements Figure {
     private final double width;
     private final double length;
 
-    public Rectangle(double width, double length) {
+    private Rectangle(double width, double length) {
         if (isArgumentValid(width) && isArgumentValid(length)) {
             this.width = width;
             this.length = length;
@@ -50,5 +50,9 @@ public class Rectangle implements Figure {
     @Override
     public double area() {
         return width * length;
+    }
+
+    public static Rectangle create(double value) {
+        return new Rectangle(value, value);
     }
 }

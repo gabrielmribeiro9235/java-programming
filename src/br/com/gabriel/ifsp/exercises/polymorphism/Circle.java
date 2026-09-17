@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Circle implements Figure {
     private final double radius;
 
-    public Circle(double radius) {
+    private Circle(double radius) {
         if (isRadiusValid(radius)) {
             this.radius = radius;
         } else {
@@ -43,5 +43,9 @@ public class Circle implements Figure {
     @Override
     public double area() {
         return Math.pow(radius, 2) * Math.PI;
+    }
+
+    public static Circle create(double value) {
+        return new Circle(value);
     }
 }

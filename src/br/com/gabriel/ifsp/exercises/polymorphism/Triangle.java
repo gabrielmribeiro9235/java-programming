@@ -7,7 +7,7 @@ public class Triangle implements Figure {
     private final double b;
     private final double c;
 
-    public Triangle(double a, double b, double c) {
+    private Triangle(double a, double b, double c) {
         if (isTriangleValid(a, b, c)) {
             this.a = a;
             this.b = b;
@@ -58,5 +58,9 @@ public class Triangle implements Figure {
     public double area() {
         double semiperimeter = (a + b + c) / 2;
         return Math.sqrt(semiperimeter * (semiperimeter - a) * (semiperimeter - b) * (semiperimeter - c));
+    }
+
+    public static Triangle create(double value) {
+        return new Triangle(value, value, value);
     }
 }
