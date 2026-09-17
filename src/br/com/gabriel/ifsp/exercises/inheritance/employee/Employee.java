@@ -1,7 +1,6 @@
 package br.com.gabriel.ifsp.exercises.inheritance.employee;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee {
     private final String id;
@@ -32,16 +31,5 @@ public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee 
 
     public LocalDate getDateOfEmployment() {
         return dateOfEmployment;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Employee employee)) return false;
-        return Objects.equals(id, employee.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
     }
 }

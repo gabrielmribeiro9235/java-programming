@@ -2,6 +2,7 @@ package br.com.gabriel.ifsp.exercises.inheritance.employee;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public final class FullTimeEmployee extends Employee {
     private double monthlySalary;
@@ -29,5 +30,17 @@ public final class FullTimeEmployee extends Employee {
                 ", dateOfEmployment=" + getDateOfEmployment().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")) +
                 ", monthlySalary=" + monthlySalary +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        FullTimeEmployee that = (FullTimeEmployee) o;
+        return that.getId().equals(getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
     }
 }
