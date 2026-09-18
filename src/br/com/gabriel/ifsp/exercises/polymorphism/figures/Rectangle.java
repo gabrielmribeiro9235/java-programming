@@ -1,4 +1,4 @@
-package br.com.gabriel.ifsp.exercises.polymorphism;
+package br.com.gabriel.ifsp.exercises.polymorphism.figures;
 
 import java.util.Objects;
 
