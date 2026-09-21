@@ -46,11 +46,11 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id='" + getId() + '\'' +
-                ", name='" + getName() + '\'' +
-                ", jobTitle='" + getJobTitle() + '\'' +
-                ", salary=" + getSalary() +
-                ", dateOfEmployment=" + getDateOfEmployment() +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", salary=" + salary +
+                ", dateOfEmployment=" + dateOfEmployment +
                 '}';
     }
 
@@ -58,12 +58,12 @@ public class Employee {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(getId(), employee.getId());
+        return Objects.equals(id, employee.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(id);
     }
 
     public int getYearsOfService() {
