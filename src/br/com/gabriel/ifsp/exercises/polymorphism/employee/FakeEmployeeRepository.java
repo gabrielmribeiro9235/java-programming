@@ -40,6 +40,17 @@ public class FakeEmployeeRepository implements Repository<Employee, String> {
         return null;
     }
 
+    @Override
+    public Employee[] findAll() {
+        Employee[] array = new Employee[numberOfEmployees];
+
+        for (int i = 0; i < numberOfEmployees; i++) {
+            array[i] = employees[i];
+        }
+
+        return array;
+    }
+
     public String showSavedEmployees() {
         StringJoiner joiner = new StringJoiner("\n");
 
