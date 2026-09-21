@@ -1,7 +1,5 @@
 package br.com.gabriel.ifsp.exercises.polymorphism.employee;
 
-import java.util.StringJoiner;
-
 public class FakeEmployeeRepository implements Repository<Employee, String> {
     private Employee[] employees;
     private int numberOfEmployees;
@@ -49,15 +47,5 @@ public class FakeEmployeeRepository implements Repository<Employee, String> {
         }
 
         return array;
-    }
-
-    public String showSavedEmployees() {
-        StringJoiner joiner = new StringJoiner("\n");
-
-        for (int i = 0; i < numberOfEmployees; i++) {
-            joiner.add(employees[i].toString());
-        }
-
-        return joiner.toString();
     }
 }

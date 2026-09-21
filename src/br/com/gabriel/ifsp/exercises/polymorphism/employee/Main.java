@@ -5,10 +5,11 @@ import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
-        FakeEmployeeRepository repository = new FakeEmployeeRepository();
+        Repository<Employee, String> repository = new FakeEmployeeRepository();
 
         RegisterEmployeeService registerEmployeeService = new RegisterEmployeeService(repository);
         FindEmployeeService findEmployeeService = new FindEmployeeService(repository);
+        ShowSavedEmployeesService showSavedEmployeesService = new ShowSavedEmployeesService(repository);
 
         registerEmployeeService.register(new Employee("01", "John", "Programmer", LocalDate.of(2024, 10, 20), 2500));
         registerEmployeeService.register(new Employee("02", "Mary", "Marketing", LocalDate.of(2022, 10, 20), 3000));
@@ -32,6 +33,6 @@ public class Main {
         }
 
         System.out.println("\nAll employees saved:");
-        System.out.println(repository.showSavedEmployees());
+        System.out.println(showSavedEmployeesService.showSavedEmployees());
     }
 }
