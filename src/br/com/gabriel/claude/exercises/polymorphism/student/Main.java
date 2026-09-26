@@ -30,7 +30,7 @@ public class Main {
             System.out.printf(Locale.US, "\n%s took the final exam and received a GPA of %.2f\n", student.getName(), student.getGpa());
             System.out.printf("Now, is %s eligible for graduation? %s\n", student.getName(), (student.isEligibleForGraduation() ? "Yes" : "No"));
         } else {
-            System.out.println("There's no employee with id 01");
+            System.out.println("There's no employee with id 03");
         }
 
         System.out.println("\n------------------------------------------------------------------------------------------------");
