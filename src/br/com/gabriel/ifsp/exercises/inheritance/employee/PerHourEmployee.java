@@ -44,18 +44,6 @@ public final class PerHourEmployee extends Employee {
                 ", dateOfEmployment=" + getDateOfEmployment().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")) +
                 ", hourlyRate=" + getHourlyRate() +
                 ", workedHour=" + getWorkedHour() +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        PerHourEmployee that = (PerHourEmployee) o;
-        return that.getId().equals(getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
+                "}";
     }
 }
