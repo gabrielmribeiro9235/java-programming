@@ -35,6 +35,16 @@ public abstract sealed class Employee permits FullTimeEmployee, PerHourEmployee 
     }
 
     @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", jobTitle='" + getJobTitle() + '\'' +
+                ", dateOfEmployment=" + getDateOfEmployment() +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;

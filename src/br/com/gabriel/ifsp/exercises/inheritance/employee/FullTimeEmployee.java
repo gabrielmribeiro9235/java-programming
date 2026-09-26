@@ -1,8 +1,6 @@
 package br.com.gabriel.ifsp.exercises.inheritance.employee;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 public final class FullTimeEmployee extends Employee {
     private double monthlySalary;
@@ -23,11 +21,10 @@ public final class FullTimeEmployee extends Employee {
 
     @Override
     public String toString() {
+        String superToString = super.toString().split("\\{")[1];
+
         return "FullTimeEmployee{" +
-                "id='" + getId() + '\'' +
-                ", name='" + getName() + '\'' +
-                ", jobTitle='" + getJobTitle() + '\'' +
-                ", dateOfEmployment=" + getDateOfEmployment().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")) +
+                superToString.substring(0, superToString.length() -1) +
                 ", monthlySalary=" + monthlySalary +
                 ", salary=" + salary() +
                 "}";
