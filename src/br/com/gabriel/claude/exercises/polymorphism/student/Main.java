@@ -33,7 +33,7 @@ public class Main {
             System.out.println("There's no employee with id 01");
         }
 
-        System.out.println("\n--------------------------------------------------------");
+        System.out.println("\n------------------------------------------------------------------------------------------------");
         System.out.println("All students saved:\n");
         System.out.println(repository.showAllStudents());
     }

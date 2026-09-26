@@ -41,7 +41,7 @@ public class FakeStudentRepository implements Repository<String, Student> {
     }
 
     public String showAllStudents() {
-        StringJoiner joiner = new StringJoiner("\n--------------------------------------------------------\n");
+        StringJoiner joiner = new StringJoiner("\n------------------------------------------------------------------------------------------------\n");
 
         for (int i = 0; i < numberOfStudents; i++) {
             joiner.add("Student " + (i + 1) + "\n" + students[i].toString());
