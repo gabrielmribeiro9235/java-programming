@@ -2,6 +2,7 @@ package br.com.gabriel.claude.exercises.polymorphism.vehicle;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Objects;
 
 public class Vehicle {
     private final String id;
@@ -48,5 +49,28 @@ public class Vehicle {
 
     public double calculateMaintenanceCost() {
         return 150 * getAge() + 0.05 * getMileage();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Vehicle vehicle = (Vehicle) o;
+        return Objects.equals(id, vehicle.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id='" + getId() + '\'' +
+                ", plate='" + getPlate() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", mileage=" + getMileage() +
+                ", purchaseDate=" + getPurchaseDate() +
+                '}';
     }
 }
