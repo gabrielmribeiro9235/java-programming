@@ -17,6 +17,10 @@ public class Company {
         employees.put(id, new Employee(id, name, jobTitle, dateOfEmployment, salary));
     }
 
+    public void hire(Employee e) {
+        employees.put(e.getId(), e);
+    }
+
     public void fire(String id) {
         employees.remove(id);
     }
