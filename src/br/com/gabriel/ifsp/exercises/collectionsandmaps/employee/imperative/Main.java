@@ -55,6 +55,6 @@ public class Main {
         System.out.printf(Locale.US, "Average company salary from 06/01/2026 to 09/30/2026: US$ %.2f\n", company.averageSalary(LocalDate.of(2026, 6, 1), LocalDate.of(2026, 9, 30)));
 
         System.out.println("--------------------------------------------------------------------------------------------------------");
-        System.out.printf(Locale.US, "Average company salary (all-time): US$ %.2f\n", company.averageSalary(LocalDate.of(2026, 6, 1), LocalDate.of(2026, 10, 1)));
+        System.out.printf(Locale.US, "Average company salary (all-time): US$ %.2f\n", company.averageSalary(LocalDate.of(2026, 6, 1), LocalDate.now()));
     }
 }
