@@ -81,7 +81,7 @@ public class Company {
             while (iterator.hasNext()) {
                 final Paycheck paycheck = iterator.next();
 
-                if (paycheck.getPayday().isAfter(start) && paycheck.getPayday().isBefore(end) || paycheck.getPayday().equals(start) || paycheck.getPayday().equals(end)) {
+                if (!paycheck.getPayday().isBefore(start) && !paycheck.getPayday().isAfter(end)) {
                     sum += paycheck.getSalary();
                     count++;
                 }
