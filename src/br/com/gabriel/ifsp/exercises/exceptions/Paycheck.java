@@ -9,7 +9,9 @@ public class Paycheck {
     private final double salary;
 
     public Paycheck(LocalDate payday, double salary) {
-        if (salary < 0) {
+        Objects.requireNonNull(payday, "Payday must not be null.");
+
+        if (salary <= 0) {
             throw new IllegalArgumentException("Salary must be positive.");
         }
 
