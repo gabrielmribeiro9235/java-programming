@@ -14,9 +14,17 @@ public class Company {
         averageSalaryService = new AverageSalaryService(repository);
     }
 
+    public void hire(Employee employee) {
+        try {
+            crudEmployeeService.saveEmployee(employee);
+        } catch (Error e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
     public void hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) {
         try {
-            crudEmployeeService.saveEmployee(new Employee(id, name, jobTitle, salary, dateOfEmployment));
+            hire(new Employee(id, name, jobTitle, salary, dateOfEmployment));
         } catch (Error e) {
             System.err.println(e.getMessage());
         }
