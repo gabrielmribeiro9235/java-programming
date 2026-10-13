@@ -65,7 +65,7 @@ public class Company {
 
     public double averageSalary(String jobTitle) {
         try {
-            return averageSalaryService.averageSalary();
+            return averageSalaryService.averageSalary(jobTitle);
         } catch (Error e) {
             System.err.println(e.getMessage());
             return 0;
