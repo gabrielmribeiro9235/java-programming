@@ -2,6 +2,7 @@ package br.com.gabriel.ifsp.exercises.exceptions;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -80,7 +81,11 @@ public class Employee {
     }
 
     public void addPaycheck(LocalDate payday) {
-        paychecks.add(new Paycheck(payday, salary));
+        try {
+            paychecks.add(new Paycheck(payday, salary));
+        } catch (PaymentOnNonBusinessDayException e) {
+            System.err.println(e.getMessage() + " Date received: " + payday.format(DateTimeFormatter.ofPattern("MM-dd-yyy")));
+        }
     }
 
     public void removePaycheck(Paycheck paycheck) {
