@@ -17,7 +17,7 @@ public class Company {
     public void hire(Employee employee) {
         try {
             crudEmployeeService.saveEmployee(employee);
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
@@ -25,7 +25,7 @@ public class Company {
     public void hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) {
         try {
             hire(new Employee(id, name, jobTitle, salary, dateOfEmployment));
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
@@ -33,7 +33,7 @@ public class Company {
     public void fire(String id) {
         try {
             crudEmployeeService.deleteEmployee(id);
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
@@ -45,7 +45,7 @@ public class Company {
     public Employee[] getEmployees(String jobTitle) {
         try {
             return crudEmployeeService.getEmployees(jobTitle);
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             return new Employee[0];
         }
@@ -54,7 +54,7 @@ public class Company {
     public void pay(String id) {
         try {
             payEmployeeService.pay(id);
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
@@ -62,7 +62,7 @@ public class Company {
     public void increaseSalary(String id, double newSalary) {
         try {
             crudEmployeeService.increaseEmployeeSalary(id, newSalary);
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
@@ -74,7 +74,7 @@ public class Company {
     public double averageSalary(String jobTitle) {
         try {
             return averageSalaryService.averageSalary(jobTitle);
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             return 0;
         }
@@ -83,7 +83,7 @@ public class Company {
     public double averageSalary(LocalDate start, LocalDate end) {
         try {
             return averageSalaryService.averageSalary(start, end);
-        } catch (Error e) {
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             return 0;
         }
