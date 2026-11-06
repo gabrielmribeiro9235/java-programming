@@ -22,6 +22,8 @@ public class Main {
         Employee john = new Employee("01", "John", "Programmer", 2500, LocalDate.of(2024, 10, 20), new SqlitePaycheckRepository("01"));
 
         try {
+            company.hire(john);
+
             john.addPaycheck(LocalDate.of(2026, 7, 1));
             john.addPaycheck(LocalDate.of(2026, 8, 3));
             john.addPaycheck(LocalDate.of(2026, 9, 1));
@@ -36,6 +38,8 @@ public class Main {
         Employee mary = new Employee("02", "Mary", "Programmer", 3000, LocalDate.of(2022, 10, 20), new SqlitePaycheckRepository("02"));
 
         try {
+            company.hire(mary);
+
             mary.addPaycheck(LocalDate.of(2026, 6, 1));
             mary.addPaycheck(LocalDate.of(2026, 7, 1));
             mary.addPaycheck(LocalDate.of(2026, 8, 3));
@@ -45,8 +49,6 @@ public class Main {
         }
 
         try {
-            company.hire(john);
-            company.hire(mary);
             company.hire("03", "Anthony", "Marketing", 4000, LocalDate.of(2021, 10, 20));
             company.hire("04", "Joshua", "Trainee", 1800, LocalDate.of(2023, 9, 20));
         } catch (RuntimeException e) {
