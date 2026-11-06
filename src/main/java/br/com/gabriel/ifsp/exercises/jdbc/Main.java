@@ -4,6 +4,7 @@ import br.com.gabriel.ifsp.exercises.jdbc.application.Company;
 import br.com.gabriel.ifsp.exercises.jdbc.domain.model.Employee;
 import br.com.gabriel.ifsp.exercises.jdbc.domain.model.Paycheck;
 import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.DatabaseInitializer;
+import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.SqliteAverageSalaryCalculator;
 import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.SqliteEmployeeRepository;
 import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.SqlitePaycheckRepository;
 
@@ -16,7 +17,7 @@ public class Main {
     static void main() {
         DatabaseInitializer.init();
 
-        Company company = new Company(new SqliteEmployeeRepository());
+        Company company = new Company(new SqliteEmployeeRepository(), new SqliteAverageSalaryCalculator());
 
         Employee john = new Employee("01", "John", "Programmer", 2500, LocalDate.of(2024, 10, 20), new SqlitePaycheckRepository("01"));
 

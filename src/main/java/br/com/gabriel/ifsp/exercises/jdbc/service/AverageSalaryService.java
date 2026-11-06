@@ -1,47 +1,25 @@
 package br.com.gabriel.ifsp.exercises.jdbc.service;
 
-import br.com.gabriel.ifsp.exercises.jdbc.domain.model.Employee;
-import br.com.gabriel.ifsp.exercises.jdbc.domain.model.Paycheck;
-import br.com.gabriel.ifsp.exercises.jdbc.domain.repository.EmployeeRepository;
+import br.com.gabriel.ifsp.exercises.jdbc.domain.repository.AverageSalaryCalculator;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class AverageSalaryService {
-    private final EmployeeRepository repository;
+    private final AverageSalaryCalculator calculator;
 
-    public AverageSalaryService(EmployeeRepository repository) {
-        this.repository = repository;
+    public AverageSalaryService(AverageSalaryCalculator calculator) {
+        this.calculator = calculator;
     }
 
     public double averageSalary() {
-        return Arrays.stream(repository.getEmployees())
-                .flatMap(Employee::payments)
-                .mapToDouble(Paycheck::getSalary)
-                .average()
-                .orElse(0);
+        return calculator.averageSalary();
     }
 
     public double averageSalary(String jobTitle) {
-        Objects.requireNonNull(jobTitle, "Job Title must not be null.");
-
-        return Arrays.stream(repository.getEmployees(jobTitle))
-                .flatMap(Employee::payments)
-                .mapToDouble(Paycheck::getSalary)
-                .average()
-                .orElse(0);
+        return calculator.averageSalary(jobTitle);
     }
 
     public double averageSalary(LocalDate start, LocalDate end) {
-        Objects.requireNonNull(start, "The start date must not be null.");
-        Objects.requireNonNull(end, "The end date must not be null.");
-
-        return Arrays.stream(repository.getEmployees())
-                .flatMap(Employee::payments)
-                .filter(p -> !p.getPayday().isBefore(start) && !p.getPayday().isAfter(end))
-                .mapToDouble(Paycheck::getSalary)
-                .average()
-                .orElse(0);
+        return calculator.averageSalary(start, end);
     }
 }
