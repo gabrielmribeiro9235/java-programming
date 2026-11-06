@@ -1,19 +1,14 @@
 package br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence;
 
-import org.sqlite.SQLiteConfig;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseInitializer {
-    private static final String URL = "jdbc:sqlite:src/main/resources/company.db";
-
     private DatabaseInitializer() {}
 
     public static void init() {
-        try (Connection connection = openConnection()) {
+        try (Connection connection = SqliteConnectionFactory.open()) {
             System.out.println("DROPPING THE EXISTING paycheck AND employee tables...");
             dropTablesIfExist(connection);
             System.out.println("RECREATING THE employee TABLE...");
@@ -23,12 +18,6 @@ public class DatabaseInitializer {
         } catch (SQLException e) {
             throw new RuntimeException("Failed to initalize database", e);
         }
-    }
-
-    private static Connection openConnection() throws SQLException {
-        SQLiteConfig config = new SQLiteConfig();
-        config.enforceForeignKeys(true);
-        return DriverManager.getConnection(URL, config.toProperties());
     }
 
     private static void createEmployeeTable(Connection connection) throws SQLException {
