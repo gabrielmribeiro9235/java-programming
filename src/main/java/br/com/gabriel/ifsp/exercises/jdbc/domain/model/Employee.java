@@ -82,11 +82,7 @@ public class Employee {
     }
 
     public void addPaycheck(LocalDate payday) {
-        try {
-            paychecks.add(new Paycheck(payday, salary));
-        } catch (PaymentOnNonBusinessDayException e) {
-            System.err.println(e.getMessage() + " Date received: " + payday.format(DateTimeFormatter.ofPattern("MM-dd-yyy")));
-        }
+        paychecks.add(new Paycheck(payday, salary));
     }
 
     public void removePaycheck(Paycheck paycheck) {

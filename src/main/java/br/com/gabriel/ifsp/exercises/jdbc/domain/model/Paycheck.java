@@ -4,6 +4,7 @@ import br.com.gabriel.ifsp.exercises.jdbc.domain.exception.PaymentOnNonBusinessD
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Paycheck {
@@ -18,7 +19,7 @@ public class Paycheck {
         }
 
         if (payday.getDayOfWeek() == DayOfWeek.SATURDAY || payday.getDayOfWeek() == DayOfWeek.SUNDAY) {
-            throw new PaymentOnNonBusinessDayException("The payment date must be a business day.");
+            throw new PaymentOnNonBusinessDayException("The payment date must be a business day. Date received: " + payday.format(DateTimeFormatter.ofPattern("MM-dd-yyy")));
         }
 
         this.payday = payday;
