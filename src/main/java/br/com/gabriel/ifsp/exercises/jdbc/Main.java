@@ -102,7 +102,7 @@ public class Main {
         System.out.println("--------------------------------------------------------------------------------------------------------");
         try {
             Arrays.stream(company.getEmployees()).toList().forEach(e -> company.pay(e.getId()));
-            System.out.println("Company employees has received their payment of October");
+            System.out.println("Company employees have received their payment of the current month");
         } catch (RuntimeException e) {
             System.err.println(e.getMessage() + (e.getCause() != null ? " (cause: " + e.getCause().getMessage() + ")" : ""));
         }
