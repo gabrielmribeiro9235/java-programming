@@ -22,27 +22,15 @@ public class Company {
     }
 
     public void hire(Employee employee) {
-        try {
-            crudEmployeeService.saveEmployee(employee);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        crudEmployeeService.saveEmployee(employee);
     }
 
     public void hire(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment) {
-        try {
-            hire(new Employee(id, name, jobTitle, salary, dateOfEmployment, new SqlitePaycheckRepository(id)));
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        hire(new Employee(id, name, jobTitle, salary, dateOfEmployment, new SqlitePaycheckRepository(id)));
     }
 
     public void fire(String id) {
-        try {
-            crudEmployeeService.deleteEmployee(id);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        crudEmployeeService.deleteEmployee(id);
     }
 
     public Employee[] getEmployees() {
@@ -50,28 +38,15 @@ public class Company {
     }
 
     public Employee[] getEmployees(String jobTitle) {
-        try {
-            return crudEmployeeService.getEmployees(jobTitle);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            return new Employee[0];
-        }
+        return crudEmployeeService.getEmployees(jobTitle);
     }
 
     public void pay(String id) {
-        try {
-            payEmployeeService.pay(id);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        payEmployeeService.pay(id);
     }
 
     public void increaseSalary(String id, double newSalary) {
-        try {
-            crudEmployeeService.increaseEmployeeSalary(id, newSalary);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        crudEmployeeService.increaseEmployeeSalary(id, newSalary);
     }
 
     public double averageSalary() {
@@ -79,20 +54,10 @@ public class Company {
     }
 
     public double averageSalary(String jobTitle) {
-        try {
-            return averageSalaryService.averageSalary(jobTitle);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            return 0;
-        }
+        return averageSalaryService.averageSalary(jobTitle);
     }
 
     public double averageSalary(LocalDate start, LocalDate end) {
-        try {
-            return averageSalaryService.averageSalary(start, end);
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            return 0;
-        }
+        return averageSalaryService.averageSalary(start, end);
     }
 }
