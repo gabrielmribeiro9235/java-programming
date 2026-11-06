@@ -1,20 +1,46 @@
 package br.com.gabriel.ifsp.exercises.jdbc;
 
 import br.com.gabriel.ifsp.exercises.jdbc.application.Company;
+import br.com.gabriel.ifsp.exercises.jdbc.domain.exception.PaymentOnNonBusinessDayException;
 import br.com.gabriel.ifsp.exercises.jdbc.domain.model.Employee;
 import br.com.gabriel.ifsp.exercises.jdbc.domain.model.Paycheck;
 import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.DatabaseInitializer;
 import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.SqliteAverageSalaryCalculator;
 import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.SqliteEmployeeRepository;
 import br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence.SqlitePaycheckRepository;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Locale;
 
 public class Main {
+    /** For testing purposes only: if today is not a business day, Mockito makes
+     * {@code LocalDate.now()} return the next business day, so the demo can run on
+     * weekends without throwing {@link PaymentOnNonBusinessDayException}.
+     */
     static void main() {
+        LocalDate realToday = LocalDate.now();
+        LocalDate fakeToday = nextBusinessDay(realToday);
+
+        try (MockedStatic<LocalDate> mocked = Mockito.mockStatic(LocalDate.class, Mockito.CALLS_REAL_METHODS)) {
+            mocked.when(LocalDate::now).thenReturn(fakeToday);
+            run();
+        }
+    }
+
+    private static LocalDate nextBusinessDay(LocalDate date) {
+        while (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            date = date.plusDays(1);
+        }
+
+        return date;
+    }
+
+    private static void run() {
         DatabaseInitializer.init();
 
         Company company = new Company(new SqliteEmployeeRepository(), new SqliteAverageSalaryCalculator());
