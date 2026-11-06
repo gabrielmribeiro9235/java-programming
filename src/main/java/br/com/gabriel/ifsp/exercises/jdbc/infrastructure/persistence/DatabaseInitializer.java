@@ -45,7 +45,7 @@ public class DatabaseInitializer {
                     salary          NUMERIC(10,2) NOT NULL CHECK ( salary > 0 ),
                     employee_id     TEXT NOT NULL,
                     PRIMARY KEY(payday, salary, employee_id),
-                    FOREIGN KEY(employee_id) REFERENCES employee(id)
+                    FOREIGN KEY(employee_id) REFERENCES employee(id) ON DELETE CASCADE
                 );
                 """;
 
