@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.stream.Stream;
 
 public interface PaycheckRepository {
-    void add(Paycheck paycheck, String employeeId);
-    void remove(Paycheck paycheck, String employeeId);
-    Iterator<Paycheck> iterator(String employeeId);
-    Stream<Paycheck> stream(String employeeId);
+    void add(Paycheck paycheck);
+    void remove(Paycheck paycheck);
+    Iterator<Paycheck> iterator();
+    Stream<Paycheck> stream();
 }

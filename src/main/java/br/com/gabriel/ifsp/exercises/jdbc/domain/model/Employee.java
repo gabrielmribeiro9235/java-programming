@@ -83,21 +83,21 @@ public class Employee {
 
     public void addPaycheck(LocalDate payday) {
         try {
-            paychecks.add(new Paycheck(payday, salary), id);
+            paychecks.add(new Paycheck(payday, salary));
         } catch (PaymentOnNonBusinessDayException e) {
             System.err.println(e.getMessage() + " Date received: " + payday.format(DateTimeFormatter.ofPattern("MM-dd-yyy")));
         }
     }
 
     public void removePaycheck(Paycheck paycheck) {
-        paychecks.remove(paycheck, id);
+        paychecks.remove(paycheck);
     }
 
     public Iterator<Paycheck> iteratorPaycheck() {
-        return paychecks.iterator(id);
+        return paychecks.iterator();
     }
 
     public Stream<Paycheck> payments() {
-        return paychecks.stream(id);
+        return paychecks.stream();
     }
 }
