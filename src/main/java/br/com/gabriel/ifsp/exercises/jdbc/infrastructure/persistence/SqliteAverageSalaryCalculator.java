@@ -6,6 +6,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+//TODO maravilha, aqui eu vi que você mandou direto no SQL. Melhor do ponto de vista de desempenho.
+//Eu só atualizaria o nome para repo. Por exemplo. AverageSalaryReport. Outra possibilidade, já apontada, é jogar em EmployeeRepository
 public class SqliteAverageSalaryCalculator implements AverageSalaryCalculator {
     @Override
     public double averageSalary() {
