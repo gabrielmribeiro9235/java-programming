@@ -8,6 +8,7 @@ import br.com.gabriel.ifsp.exercises.jdbc.service.AverageSalaryService;
 import br.com.gabriel.ifsp.exercises.jdbc.service.CrudEmployeeService;
 import br.com.gabriel.ifsp.exercises.jdbc.service.PayEmployeeService;
 
+//TODO agora que tem os services, eles são sua camada de aplicaçào. Não precisa desse cara no meio não. 
 import java.time.LocalDate;
 
 public class Company {
