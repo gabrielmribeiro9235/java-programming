@@ -19,6 +19,7 @@ public class Employee {
     private final PaycheckRepository paychecks;
 
     public Employee(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment, PaycheckRepository paychecks) {
+        //TODO você está validando salary aqui, mas não no setter. Se mudar a validação para o setter e invocar o setter no construtor, ao invés de fazer this.salary = salary; você garante a validação em ambos. 
         if (salary <= 0) {
             throw new IllegalArgumentException("Salary must be positive.");
         }
@@ -30,6 +31,7 @@ public class Employee {
         this.paychecks = paychecks;
     }
 
+    //TODO setters e getters, com lógica padrão, devem vir no final do arquivo (clean code). Deixe os métodos com lógica relevante mais para cima. 
     public String getId() {
         return id;
     }
