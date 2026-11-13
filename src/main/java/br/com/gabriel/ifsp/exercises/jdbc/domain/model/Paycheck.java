@@ -26,14 +26,6 @@ public class Paycheck {
         this.salary = salary;
     }
 
-    public LocalDate getPayday() {
-        return payday;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -52,5 +44,13 @@ public class Paycheck {
                 "payday=" + payday +
                 ", salary=" + salary +
                 '}';
+    }
+
+     public LocalDate getPayday() {
+        return payday;
+    }
+
+    public double getSalary() {
+        return salary;
     }
 }
