@@ -40,6 +40,7 @@ public class Main {
         return date;
     }
 
+    //TODO um grande try, um único catch. Assim nao precisa repetir e repetir e nao escapa nada. 
     private static void run() {
         DatabaseInitializer.init();
 
