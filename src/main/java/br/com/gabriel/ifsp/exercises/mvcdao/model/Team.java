@@ -1,5 +1,6 @@
 package br.com.gabriel.ifsp.exercises.mvcdao.model;
 
+import java.util.Arrays;
 import java.util.Objects;
 import static java.util.function.Predicate.not;
 
@@ -8,7 +9,9 @@ public class Team {
     private final String baseLocation;
     private final String coachName;
     private Player captain;
-    private final PlayerRepository players;
+    private final Player[] players;
+    private int numberOfPlayers;
+    private static final int TEAM_SIZE = 18;
 
     public Team(String name, String baseLocation, String coachName) {
         Objects.requireNonNull(name, "Name cannot be null");
@@ -17,17 +20,42 @@ public class Team {
         this.name = name;
         this.baseLocation = baseLocation;
         this.coachName = coachName;
-        players = new PlayerRepository(name);
+        players = new Player[TEAM_SIZE];
     }
 
     public void addPlayer(Player player) {
         Objects.requireNonNull(player, "Player cannot be null");
-        players.add(player);
+
+        if (numberOfPlayers >= TEAM_SIZE) {
+            throw new IllegalStateException("Team is full");
+        }
+
+        players[numberOfPlayers++] = player;
     }
 
     public void removePlayer(Player player) {
         Objects.requireNonNull(player, "Player cannot be null");
-        players.remove(player);
+
+        int playerIndex = findPlayerIndex(player);
+        if (playerIndex == -1) {
+            throw new IllegalStateException("Player not found");
+        }
+
+        for (int i = playerIndex; i < numberOfPlayers; i++) {
+            players[i] = players[i + 1];
+        }
+
+        numberOfPlayers--;
+    }
+
+    private int findPlayerIndex(Player player) {
+        for (int i = 0; i < numberOfPlayers; i++) {
+            if (players[i].equals(player)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public void substitute(Player substitute, Player starter) {
@@ -41,16 +69,14 @@ public class Team {
     }
 
     public Player[] getFieldedPlayers() {
-        return players.findAll()
+        return Arrays.stream(players)
                 .filter(Player::isFielded)
-                .toList()
                 .toArray(Player[]::new);
     }
 
     public Player[] getOutfieldedPlayers() {
-        return players.findAll()
+        return Arrays.stream(players)
                 .filter(not(Player::isFielded))
-                .toList()
                 .toArray(Player[]::new);
     }
 
