@@ -76,7 +76,11 @@ public class TeamController {
         Objects.requireNonNull(team, "Team cannot be null");
         Objects.requireNonNull(player, "Player cannot be null");
 
-        team.removePlayer(player);
+        if (team.getCaptain().equals(player)) {
+            team.setCaptain(null);
+            updateTeam(team);
+        }
+
         playerDAO.delete(PlayerMapper.toDto(player));
     }
 
