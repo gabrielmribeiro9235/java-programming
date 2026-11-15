@@ -118,4 +118,14 @@ public class TeamController {
                     return p;
                 }).toArray(Player[]::new);
     }
+
+    public Player[] getAllPlayers() {
+        return playerDAO.findAll()
+                .stream().map(dto -> {
+                    Player p = PlayerMapper.fromDto(dto);
+                    TeamDTO teamDto = teamDAO.findOne(dto.teamName()).orElse(null);
+                    p.setTeam(TeamMapper.fromDto(teamDto));
+                    return p;
+                }).toArray(Player[]::new);
+    }
 }
