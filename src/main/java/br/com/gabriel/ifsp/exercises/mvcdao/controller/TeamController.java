@@ -31,6 +31,10 @@ public class TeamController {
         teamDAO.delete(TeamMapper.toDTO(team));
     }
 
+    public void deleteTeam(String teamName) {
+        teamDAO.delete(teamName);
+    }
+
     public void updateTeam(Team team) {
         teamDAO.update(TeamMapper.toDTO(team));
     }
