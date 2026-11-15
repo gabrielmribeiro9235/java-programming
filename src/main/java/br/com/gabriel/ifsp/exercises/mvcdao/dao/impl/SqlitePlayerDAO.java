@@ -105,7 +105,7 @@ public class SqlitePlayerDAO implements PlayerDAO {
         try (PreparedStatement statement = ConnectionFactory.getPrepareStatement(sql)) {
             statement.setString(1, teamName);
 
-            ResultSet rs = statement.executeQuery(sql);
+            ResultSet rs = statement.executeQuery();
             Set<PlayerDTO> players = new LinkedHashSet<>();
 
             while (rs.next()) {
