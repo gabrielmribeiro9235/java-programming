@@ -33,14 +33,13 @@ public class SqliteTeamDAO implements TeamDAO {
     public void update(TeamDTO teamDto) {
         Objects.requireNonNull(teamDto, "teamDto cannot be null");
 
-        String sql = "UPDATE team SET name = ?, coach_name = ?, base_location = ?, captain_number = ? WHERE name = ?";
+        String sql = "UPDATE team SET coach_name = ?, base_location = ?, captain_number = ? WHERE name = ?";
 
         try (PreparedStatement statement = ConnectionFactory.getPrepareStatement(sql)) {
-            statement.setString(1, teamDto.name());
-            statement.setString(2, teamDto.coachName());
-            statement.setString(3, teamDto.baseLocation());
-            statement.setObject(4, (teamDto.captainNumber() == -1 ? null : teamDto.captainNumber()));
-            statement.setString(5, teamDto.name());
+            statement.setString(1, teamDto.coachName());
+            statement.setString(2, teamDto.baseLocation());
+            statement.setObject(3, (teamDto.captainNumber() == -1 ? null : teamDto.captainNumber()));
+            statement.setString(4, teamDto.name());
 
             statement.executeUpdate();
         } catch (SQLException e) {

@@ -35,18 +35,16 @@ public class SqlitePlayerDAO implements PlayerDAO {
         Objects.requireNonNull(playerDto, "playerDto cannot be null");
 
         String sql = """
-                UPDATE player SET team_name = ? number = ?, name = ?, position = ?, is_fielded = ?
+                UPDATE player SET name = ?, position = ?, is_fielded = ?
                     WHERE team_name = ? AND number = ?
                 """;
 
         try (PreparedStatement statement = ConnectionFactory.getPrepareStatement(sql)) {
-            statement.setString(1, playerDto.teamName());
-            statement.setInt(2, playerDto.number());
-            statement.setString(3, playerDto.name());
-            statement.setString(4, playerDto.postion());
-            statement.setInt(5, playerDto.isFielded() ? 1 : 0);
-            statement.setString(6, playerDto.teamName());
-            statement.setInt(7, playerDto.number());
+            statement.setString(1, playerDto.name());
+            statement.setString(2, playerDto.postion());
+            statement.setInt(3, playerDto.isFielded() ? 1 : 0);
+            statement.setString(4, playerDto.teamName());
+            statement.setInt(5, playerDto.number());
 
             statement.executeUpdate();
         } catch (SQLException e) {
