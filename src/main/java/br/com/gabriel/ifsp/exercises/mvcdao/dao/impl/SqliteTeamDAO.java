@@ -79,8 +79,8 @@ public class SqliteTeamDAO implements TeamDAO {
             while (rs.next()) {
                 teams.add(new TeamDTO(
                         rs.getString("name"),
-                        rs.getString("coach_name"),
                         rs.getString("base_location"),
+                        rs.getString("coach_name"),
                         rs.getInt("captain_number")
                 ));
             }
@@ -101,8 +101,8 @@ public class SqliteTeamDAO implements TeamDAO {
             if (rs.next()) {
                 return Optional.of(new TeamDTO(
                         rs.getString("name"),
-                        rs.getString("coach_name"),
                         rs.getString("base_location"),
+                        rs.getString("coach_name"),
                         rs.getInt("captain_number")
                 ));
             }
