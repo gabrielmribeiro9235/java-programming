@@ -15,7 +15,7 @@ public class TeamMapper {
                 team.getName(),
                 team.getBaseLocation(),
                 team.getCoachName(),
-                team.getCaptain().getNumber()
+                (team.getCaptain() == null ? -1 : team.getCaptain().getNumber())
         );
     }
 

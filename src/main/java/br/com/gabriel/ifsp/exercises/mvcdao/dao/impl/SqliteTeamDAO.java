@@ -21,7 +21,7 @@ public class SqliteTeamDAO implements TeamDAO {
             statement.setString(1, teamDto.name());
             statement.setString(2, teamDto.coachName());
             statement.setString(3, teamDto.baseLocation());
-            statement.setInt(4, teamDto.captainNumber());
+            statement.setObject(4, (teamDto.captainNumber() == -1 ? null : teamDto.captainNumber()));
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -39,7 +39,7 @@ public class SqliteTeamDAO implements TeamDAO {
             statement.setString(1, teamDto.name());
             statement.setString(2, teamDto.coachName());
             statement.setString(3, teamDto.baseLocation());
-            statement.setInt(4, teamDto.captainNumber());
+            statement.setObject(4, (teamDto.captainNumber() == -1 ? null : teamDto.captainNumber()));
             statement.setString(5, teamDto.name());
 
             statement.executeUpdate();

@@ -98,7 +98,7 @@ public class Team {
                 "name='" + name + '\'' +
                 ", baseLocation='" + baseLocation + '\'' +
                 ", coachName='" + coachName + '\'' +
-                ", captain=" + captain.getName() +
+                ", captain=" + (captain == null ? null : captain.getName()) +
                 '}';
     }
 

@@ -46,7 +46,9 @@ public class TeamController {
                 .map(teamDto -> {
                     Team t = TeamMapper.fromDto(teamDto);
                     PlayerDTO captainDto = playerDAO.findOne(teamDto.captainNumber(), teamDto.name()).orElse(null);
-                    t.setCaptain(PlayerMapper.fromDto(captainDto));
+                    if (captainDto != null) {
+                        t.setCaptain(PlayerMapper.fromDto(captainDto));
+                    }
                     return t;
                 })
                 .collect(Collectors.toSet());
@@ -58,7 +60,9 @@ public class TeamController {
         Team team = TeamMapper.fromDto(dto);
 
         PlayerDTO captainDto = playerDAO.findOne(dto.captainNumber(), dto.name()).orElse(null);
-        team.setCaptain(PlayerMapper.fromDto(captainDto));
+        if (captainDto != null) {
+            team.setCaptain(PlayerMapper.fromDto(captainDto));
+        }
 
         return team;
     }
