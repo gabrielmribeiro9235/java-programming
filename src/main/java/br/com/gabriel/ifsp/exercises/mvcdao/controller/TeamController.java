@@ -76,7 +76,7 @@ public class TeamController {
         Objects.requireNonNull(team, "Team cannot be null");
         Objects.requireNonNull(player, "Player cannot be null");
 
-        if (team.getCaptain().equals(player)) {
+        if (team.getCaptain() != null && team.getCaptain().equals(player)) {
             team.setCaptain(null);
             updateTeam(team);
         }
