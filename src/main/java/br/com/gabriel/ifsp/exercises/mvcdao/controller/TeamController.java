@@ -12,6 +12,7 @@ import br.com.gabriel.ifsp.exercises.mvcdao.model.Team;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
+import static java.util.function.Predicate.not;
 import java.util.stream.Collectors;
 
 public class TeamController {
@@ -67,7 +68,6 @@ public class TeamController {
         Objects.requireNonNull(team, "Team cannot be null");
         Objects.requireNonNull(player, "Player cannot be null");
 
-        team.addPlayer(player);
         player.setTeam(team);
         playerDAO.insert(PlayerMapper.toDto(player));
     }
@@ -104,12 +104,28 @@ public class TeamController {
 
     public Player[] getFieldedPlayers(Team team) {
         Objects.requireNonNull(team, "Team cannot be null");
-        return team.getFieldedPlayers();
+        return playerDAO.findAllByTeam(team.getName())
+                .stream()
+                .filter(PlayerDTO::isFielded)
+                .map(dto -> {
+                    Player p = PlayerMapper.fromDto(dto);
+                    TeamDTO teamDto = teamDAO.findOne(dto.teamName()).orElse(null);
+                    p.setTeam(TeamMapper.fromDto(teamDto));
+                    return p;
+                }).toArray(Player[]::new);
     }
 
     public Player[] getOutfieldedPlayers(Team team) {
         Objects.requireNonNull(team, "Team cannot be null");
-        return team.getOutfieldedPlayers();
+        return playerDAO.findAllByTeam(team.getName())
+                .stream()
+                .filter(not(PlayerDTO::isFielded))
+                .map(dto -> {
+                    Player p = PlayerMapper.fromDto(dto);
+                    TeamDTO teamDto = teamDAO.findOne(dto.teamName()).orElse(null);
+                    p.setTeam(TeamMapper.fromDto(teamDto));
+                    return p;
+                }).toArray(Player[]::new);
     }
 
     public Player[] getAllPlayersFrom(Team team) {
