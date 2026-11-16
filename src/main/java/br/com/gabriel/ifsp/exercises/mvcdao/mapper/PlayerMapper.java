@@ -29,11 +29,8 @@ public class PlayerMapper {
 
         TeamDTO teamDto = teamDAO.findOne(dto.teamName()).orElseThrow(() -> new RuntimeException("Team not found"));
 
-        return new Player(
-                dto.name(),
-                dto.number(),
-                dto.postion(),
-                TeamMapper.fromDto(teamDto)
-        );
+        Player player = new Player(dto.name(), dto.number(), dto.postion(), TeamMapper.fromDto(teamDto));
+        player.setFielded(dto.isFielded());
+        return player;
     }
 }
