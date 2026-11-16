@@ -139,7 +139,12 @@ public class TeamView {
         System.out.print("Position: ");
         String position = scanner.nextLine();
 
-        teamController.addPlayer(team, new Player(name, number, position, team));
+        Player newPlayer = new Player(name, number, position, team);
+        if (teamController.getAllPlayersFrom(team).length < 11) {
+            newPlayer.setFielded(true);
+        }
+
+        teamController.addPlayer(team, newPlayer);
     }
 
     public void deletePlayer() {
