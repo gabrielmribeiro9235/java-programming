@@ -238,7 +238,7 @@ public class TeamView {
     private void showPlayers(Player[] players) {
         for (int i = 0; i < players.length; i++) {
             Player player = players[i];
-            System.out.println(i + " - " + player);
+            System.out.println(i + 1 + " - " + player);
         }
     }
 }
