@@ -27,7 +27,26 @@ public class Employee {
         this.paychecks = paychecks;
     }
 
-    //TODO setters e getters, com lógica padrão, devem vir no final do arquivo (clean code). Deixe os métodos com lógica relevante mais para cima. 
+    public int getYearsOfService() {
+        return Period.between(dateOfEmployment, LocalDate.now()).getYears();
+    }
+
+    public void addPaycheck(LocalDate payday) {
+        paychecks.add(new Paycheck(payday, salary));
+    }
+
+    public void removePaycheck(Paycheck paycheck) {
+        paychecks.remove(paycheck);
+    }
+
+    public Iterator<Paycheck> iteratorPaycheck() {
+        return paychecks.iterator();
+    }
+
+    public Stream<Paycheck> payments() {
+        return paychecks.stream();
+    }
+
     public String getId() {
         return id;
     }
@@ -77,25 +96,5 @@ public class Employee {
                 ", salary=" + salary +
                 ", dateOfEmployment=" + dateOfEmployment +
                 '}';
-    }
-
-    public int getYearsOfService() {
-        return Period.between(dateOfEmployment, LocalDate.now()).getYears();
-    }
-
-    public void addPaycheck(LocalDate payday) {
-        paychecks.add(new Paycheck(payday, salary));
-    }
-
-    public void removePaycheck(Paycheck paycheck) {
-        paychecks.remove(paycheck);
-    }
-
-    public Iterator<Paycheck> iteratorPaycheck() {
-        return paychecks.iterator();
-    }
-
-    public Stream<Paycheck> payments() {
-        return paychecks.stream();
     }
 }
