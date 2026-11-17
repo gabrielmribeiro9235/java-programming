@@ -4,7 +4,6 @@ import br.com.gabriel.ifsp.exercises.jdbc.domain.repository.AverageSalaryReposit
 
 import java.time.LocalDate;
 
-//Aqui, se você nào tivesse jogado tudo no repository, você poderia praticar stream, filter, map e flatmap. 
 public class AverageSalaryService {
     private final AverageSalaryRepository calculator;
 
