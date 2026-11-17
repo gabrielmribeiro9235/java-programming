@@ -19,14 +19,10 @@ public class Employee {
     private final PaycheckRepository paychecks;
 
     public Employee(String id, String name, String jobTitle, double salary, LocalDate dateOfEmployment, PaycheckRepository paychecks) {
-        //TODO você está validando salary aqui, mas não no setter. Se mudar a validação para o setter e invocar o setter no construtor, ao invés de fazer this.salary = salary; você garante a validação em ambos. 
-        if (salary <= 0) {
-            throw new IllegalArgumentException("Salary must be positive.");
-        }
+        setSalary(salary);
         this.id = Objects.requireNonNull(id, "Id must not be null.");
         this.name = Objects.requireNonNull(name, "Name must not be null.");
         this.jobTitle = Objects.requireNonNull(jobTitle, "Job Title must not be null.");
-        this.salary = salary;
         this.dateOfEmployment = Objects.requireNonNull(dateOfEmployment, "Date of Employment must not be null.");
         this.paychecks = paychecks;
     }
@@ -49,6 +45,10 @@ public class Employee {
     }
 
     public void setSalary(double salary) {
+        if (salary <= 0) {
+            throw new IllegalArgumentException("Salary must be positive.");
+        }
+
         this.salary = salary;
     }
 
