@@ -1,14 +1,13 @@
 package br.com.gabriel.ifsp.exercises.jdbc.infrastructure.persistence;
 
-import br.com.gabriel.ifsp.exercises.jdbc.domain.repository.AverageSalaryCalculator;
+import br.com.gabriel.ifsp.exercises.jdbc.domain.repository.AverageSalaryRepository;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
-//TODO maravilha, aqui eu vi que você mandou direto no SQL. Melhor do ponto de vista de desempenho.
 //Eu só atualizaria o nome para repo. Por exemplo. AverageSalaryReport. Outra possibilidade, já apontada, é jogar em EmployeeRepository
-public class SqliteAverageSalaryCalculator implements AverageSalaryCalculator {
+public class SqliteAverageSalaryRepository implements AverageSalaryRepository {
     @Override
     public double averageSalary() {
         String sql = "SELECT AVG(salary) FROM paycheck";

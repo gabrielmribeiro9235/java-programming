@@ -1,14 +1,14 @@
 package br.com.gabriel.ifsp.exercises.jdbc.service;
 
-import br.com.gabriel.ifsp.exercises.jdbc.domain.repository.AverageSalaryCalculator;
+import br.com.gabriel.ifsp.exercises.jdbc.domain.repository.AverageSalaryRepository;
 
 import java.time.LocalDate;
 
 //Aqui, se você nào tivesse jogado tudo no repository, você poderia praticar stream, filter, map e flatmap. 
 public class AverageSalaryService {
-    private final AverageSalaryCalculator calculator;
+    private final AverageSalaryRepository calculator;
 
-    public AverageSalaryService(AverageSalaryCalculator calculator) {
+    public AverageSalaryService(AverageSalaryRepository calculator) {
         this.calculator = calculator;
     }
 
